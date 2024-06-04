@@ -1,24 +1,29 @@
 // models/user.js
-const { DataTypes } = require('sequelize');
-const db = require('../config/config.js');
 
-db.define('User', {
-    firstName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    lastName: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-    }
+const DataTypes = require('sequelize');
+const Sequelize = require('../config/config.js');
+
+
+const User = Sequelize.define("User", {
+   firstName: {
+     type: DataTypes.STRING,
+     allowNull: false
+   },
+   lastName: {
+     type: DataTypes.STRING,
+     allowNull: false
+   },
+   email: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
 });
 
-module.exports = db;
+Sequelize.sync().then(() => {
+   console.log('User table created successfully!');
+}).catch((error) => {
+   console.error('Unable to create table : ', error);
+});
 
 
-
+module.exports = User;

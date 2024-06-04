@@ -1,13 +1,13 @@
 var express = require('express');
-
-// var createError = require('http-errors');
+var app = express();
+var createError = require('http-errors');
 var http = require('http');
 var cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var logger = require('morgan');
-// var path = require('path');
+var path = require('path');
 var consign = require('consign');
-var app = express();
+
 
 
 
@@ -21,10 +21,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 consign()
-  .include('src/routes')
-  .then('src/models')
+  .include('src/config')
+  .then('src/routes')
   .then('src/controllers')
-  .then('src/config')
   .into(app);
 
 

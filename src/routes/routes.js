@@ -1,21 +1,19 @@
-module.exports = application => {
+// routes/routers.js
 
-  application.get('/', function (req, res, next) {
-    application.src.controllers.controller.index(application, req, res, next);
+
+module.exports = app => {
+
+  app.get('/', function (req, res, next) {
+      var resultado = app.src.controllers.controller.index();
+      res.json({ resultado })
   });
 
 
-  application.get('/db', function (req, res, next) {
-    application.src.controllers.controller.db(application, req, res, next);
+  app.get('/all', async function (req, res, next) {
+      var resultado2 = await app.src.controllers.controller.FindAll();
+      res.json({ resultado2 })
   });
 
-
-  application.get('/cdf', function (req, res) {
-    return res.json({ name: "Ciclano Fulano" });
-  });
-
-
-
-
+  
 }
 

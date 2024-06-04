@@ -2,15 +2,20 @@
 // const { ObjectID } = require("bson");
 // const db = require("../models/jogadorModel");
 // let fs = require('fs');
-const db = require("../models/modelExample.js");
-//--------------------------------------------------------------------------- home --------------------------------------------//
+const Users = require("../models/modelExample.js");
 
-exports.index = async function (application, req, res) {
-    return res.json({ name: "Ciclano Fulano" });
+//--------------------------------------- index --------------------------------------------//
+
+exports.index = function fulano() {
+  var nome = "Ciclano Fulano"
+  return nome
 }
 
-exports.db = async function (application, req, res) {
-    console.log(`Banco de dados conectado: ${db}`);
 
-    return res.json({ name: "aqui e o banco" });
-}
+exports.FindAll = async function All() {
+    const users = await Users.findAll();
+    return users
+  }
+
+
+
