@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 var logger = require('morgan');
 var path = require('path');
 var consign = require('consign');
-
+require("dotenv").config();
+const port = process.env.PORT;
 
 
 
@@ -29,6 +30,6 @@ consign()
 
 
 
-app.listen(3000, function(){
-  console.log('APP rodando na porta 3000');
+app.listen(port, function(){
+  console.log('APP rodando na porta ');
 });
